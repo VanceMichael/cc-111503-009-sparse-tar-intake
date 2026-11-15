@@ -4,7 +4,7 @@ Node.js 资料接收项目。当前版本保留来源原件并提供单次预览
 
 ## 运行
 
-运行时固定为 Node.js 22.22.1，npm 依赖由 package-lock.json 固定。准备阶段执行 `npm ci --ignore-scripts --no-audit --no-fund`；依赖准备完成后，运行和测试不联网。只使用本地生成资料和 loopback 来源，不需要生产账号。
+运行时固定为 Node.js 22.23.4，npm 依赖由 package-lock.json 固定。准备阶段执行 `npm ci --ignore-scripts --no-audit --no-fund`；依赖准备完成后，运行和测试不联网。只使用本地生成资料和 loopback 来源，不需要生产账号。
 
 `npm test` 验证当前预览、真实来源交互及收件存储。`npm run demo` 启动本地来源，执行一次真实预览，输出取得的内容和证据摘要后自动关闭。`npm run acceptance` 检查收件扩展接口；当前尚无 collect，因此这些检查会明确失败，不属于现有预览的故障。功能交付后，应该同时保留现有测试并通过收件检查，不能把新增检查改成跳过。
 
