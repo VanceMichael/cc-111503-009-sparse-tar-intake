@@ -1,4 +1,4 @@
-FROM local/111213-runtime-base:node22.22.1
+FROM node:22.22.1-bookworm-slim
 WORKDIR /workspace
 COPY --chown=node:node package.json package-lock.json ./
 RUN npm ci --ignore-scripts --no-audit --no-fund
