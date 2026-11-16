@@ -34,5 +34,9 @@ export class Inbox {
     return this.db.prepare('SELECT id,kind,metadata,length(body) AS size FROM evidence ORDER BY id')
       .all().map(row => ({ ...row, metadata: JSON.parse(row.metadata) }));
   }
+  readEvidence(id) {
+    const row = this.db.prepare('SELECT body FROM evidence WHERE id=?').get(id);
+    return row ? Buffer.from(row.body) : null;
+  }
   close() { this.db.close(); }
 }
