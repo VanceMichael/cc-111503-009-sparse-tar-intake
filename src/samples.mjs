@@ -1,4 +1,4 @@
-function header(name, size, type = '0') {
+export function header(name, size, type = '0') {
   const bytes = Buffer.alloc(512);
   bytes.write(name, 0, 100); bytes.write('0000644\0', 100); bytes.write('0001750\0', 108); bytes.write('0001750\0', 116);
   bytes.write(size.toString(8).padStart(11, '0') + '\0', 124); bytes.write('00000000001\0', 136);
@@ -6,7 +6,7 @@ function header(name, size, type = '0') {
   const checksum = bytes.reduce((sum, value) => sum + value, 0);
   bytes.write(checksum.toString(8).padStart(6, '0') + '\0 ', 148); return bytes;
 }
-function member(name, bytes, type = '0') {
+export function member(name, bytes, type = '0') {
   return Buffer.concat([header(name, bytes.length, type), bytes, Buffer.alloc((512 - bytes.length % 512) % 512)]);
 }
 export function pax(key, value) {
